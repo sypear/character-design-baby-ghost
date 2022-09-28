@@ -1,0 +1,206 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000222;
+}
+
+.ghost {
+  position: relative;
+  margin: 200px auto;
+  top: 0px;
+  left: 0px;
+  width: 245px;
+  height: 300px;
+  transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  -webkit-animation: moveGhost 8s infinite;
+          animation: moveGhost 8s infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  transition: all 0.1s;
+  cursor: pointer;
+}
+
+.ghost:hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.6));
+  top: -30px;
+  left: 0px;
+}
+.ghost:hover .eye {
+  width: 15px;
+  height: 26px;
+}
+.ghost:hover .eye.left {
+  top: 90px;
+  left: 49px;
+  transform: rotate(45deg);
+}
+.ghost:hover .eye.right {
+  top: 95px;
+  left: 106px;
+  width: 14px;
+  height: 22px;
+  transform: rotate(-45deg);
+}
+.ghost:hover .mouth {
+  top: 122px;
+  left: 55px;
+  width: 60px;
+  height: 22px;
+  border-radius: 30%;
+}
+.ghost:hover .hand.left {
+  -webkit-animation: moveLeftHand 0.1s alternate infinite;
+          animation: moveLeftHand 0.1s alternate infinite;
+}
+.ghost:hover .hand.right {
+  -webkit-animation: moveRightHand 0.1s alternate infinite;
+          animation: moveRightHand 0.1s alternate infinite;
+}
+.ghost:hover .tangerine {
+  top: -200px;
+  left: 0px;
+}
+
+.face {
+  width: 245px;
+  height: 300px;
+  -webkit-clip-path: polygon(0% 0%, 0% 100%, 38% 100%, 35% 88%, 56% 100%, 57% 88%, 78% 100%, 79% 88%, 100% 100%, 100% 0%);
+          clip-path: polygon(0% 0%, 0% 100%, 38% 100%, 35% 88%, 56% 100%, 57% 88%, 78% 100%, 79% 88%, 100% 100%, 100% 0%);
+  border-radius: 100% 100% 0% 100%/100% 100% 100% 100%;
+  background-color: #FFF;
+}
+.face .eye {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #474747;
+  transition: all 0.2s;
+}
+.face .eye.left {
+  top: 100px;
+  left: 49px;
+  transform: rotate(45deg);
+}
+.face .eye.right {
+  top: 100px;
+  left: 106px;
+  transform: rotate(-45deg);
+}
+.face .mouth {
+  position: absolute;
+  top: 122px;
+  left: 75px;
+  width: 19px;
+  height: 21px;
+  border-radius: 0 0 50% 50%;
+  background-color: #474747;
+  transition: all 0.2s;
+}
+.face .hand {
+  position: absolute;
+  width: 21px;
+  height: 33px;
+  border-radius: 50% 50% 0 0;
+  border-top: 1px solid #959595;
+  border-left: 1px solid #959595;
+  border-right: 1px solid #959595;
+  background-color: #FFF;
+  z-index: 10;
+}
+.face .hand.left {
+  top: 163px;
+  left: 50px;
+  transform: rotate(45deg);
+}
+.face .hand.right {
+  top: 163px;
+  left: 103px;
+  transform: rotate(-45deg);
+}
+.tangerine {
+  position: absolute;
+  top: 155px;
+  left: 70px;
+  width: 40px;
+  height: 35px;
+  border-radius: 80% 80% 60% 60%;
+  background: linear-gradient(45deg, #ff6a00, #ffc000);
+  transition: all 0.25s;
+}
+.tangerine .leap {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 10px;
+  height: 15px;
+  transform: rotate(-60deg);
+  border-radius: 50% 50% 40% 40%;
+  background-color: #97ff35;
+  -webkit-animation: moveLeap 650ms infinite alternate;
+          animation: moveLeap 650ms infinite alternate;
+}
+.tangerine .leap .leap-line {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 2px;
+  height: 12px;
+  border-radius: 50% 50% 0 0;
+  background-color: lightseagreen;
+}
+
+@-webkit-keyframes moveGhost {
+  25% {
+    left: -300px;
+  }
+  50% {
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(180deg) rotateZ(0deg);
+  }
+  75% {
+    left: 300px;
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+}
+
+@keyframes moveGhost {
+  25% {
+    left: -300px;
+  }
+  50% {
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(180deg) rotateZ(0deg);
+  }
+  75% {
+    left: 300px;
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+}
+@-webkit-keyframes moveLeftHand {
+  from {
+    transform: rotate(65deg);
+  }
+}
+@keyframes moveLeftHand {
+  from {
+    transform: rotate(65deg);
+  }
+}
+@-webkit-keyframes moveRightHand {
+  from {
+    transform: rotate(-65deg);
+  }
+}
+@keyframes moveRightHand {
+  from {
+    transform: rotate(-65deg);
+  }
+}/*# sourceMappingURL=style.css.map */

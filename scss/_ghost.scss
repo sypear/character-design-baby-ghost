@@ -1,0 +1,132 @@
+.ghost {
+    position: relative;
+    margin: 200px auto;
+    @include position();
+    @include size(245, 300);
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    animation: moveGhost 8s infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    transition: all 0.1s;
+    cursor: pointer;
+}
+
+.ghost:hover {
+    animation-play-state: paused;
+    filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.6));
+    @include position(-30);
+
+    .eye {
+        @include size(15, 26);
+    }
+
+    .eye.left {
+        @include position(90, 49);
+        transform: rotate(45deg);
+    }
+
+    .eye.right {
+        @include position(95, 106);
+        @include size(14, 22);
+        transform: rotate(-45deg);
+    }
+
+    .mouth {
+        @include position(122, 55);
+        @include size(60, 22);
+        border-radius: 30%;
+    }
+
+    .hand.left {
+        animation: moveLeftHand 0.1s alternate infinite;
+    }
+
+    .hand.right {
+        animation: moveRightHand 0.1s alternate infinite;
+    }
+
+    .tangerine {
+        @include position(-200);
+    }
+}
+
+.face {
+    @include size(245, 300);
+    clip-path: polygon(0% 0%, 0% 100%, 38% 100%, 35% 88%, 56% 100%, 57% 88%, 78% 100%, 79% 88%, 100% 100%, 100% 0%);
+    border-radius: 100% 100% 0% 100% / 100% 100% 100% 100%;
+    background-color: $white;
+
+    .eye {
+        position: absolute;
+        @include size(15, 15);
+        border-radius: 50%;
+        background-color: $darkGray;
+        transition: all 0.2s;
+    }
+
+    .eye.left {
+        @include position(100, 49);
+        transform: rotate(45deg);
+    }
+
+    .eye.right {
+        @include position(100, 106);
+        transform: rotate(-45deg);
+    }
+
+    .mouth {
+        position: absolute;
+        @include position(122, 75);
+        @include size(19, 21);
+        border-radius: 0 0 50% 50%;
+        background-color: $darkGray;
+        transition: all 0.2s;
+    }
+
+    .hand {
+        position: absolute;
+        @include size(21, 33);
+        border-radius: 50% 50% 0 0;
+        border-top: 1px solid $gray;
+        border-left: 1px solid $gray;
+        border-right: 1px solid $gray;
+        background-color: $white;
+        z-index: 10;
+    }
+
+    .hand.left {
+        @include position(163, 50);
+        transform: rotate(45deg);
+    }
+
+    .hand.right {
+        @include position(163, 103);
+        transform: rotate(-45deg);
+    }
+
+    @at-root .tangerine {
+        position: absolute;
+        @include position(155, 70);
+        @include size(40, 35);
+        border-radius: 80% 80% 60% 60%;
+        background: linear-gradient(45deg, #ff6a00, #ffc000);
+        transition: all 0.25s;
+    
+        .leap {
+            position: absolute;
+            @include position(-5, 5);
+            @include size(10, 15);
+            transform: rotate(-60deg);
+            border-radius: 50% 50% 40% 40%;
+            background-color: #97ff35;
+            animation: moveLeap 650ms infinite alternate;
+        
+            .leap-line {
+                position: absolute;
+                @include position(4, 4);
+                @include size(2, 12);
+                border-radius: 50% 50% 0 0;
+                background-color: lightseagreen;
+            }
+        }
+    }
+}

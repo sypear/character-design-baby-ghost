@@ -1,0 +1,29 @@
+@keyframes moveGhost {
+    25% {
+        left: -300px;
+    }
+
+    50% {
+        transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(180deg) rotateZ(0deg);
+    }
+
+    75% {
+        left: 300px;
+    }
+
+    100% {
+        transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+}
+
+@keyframes moveLeftHand {
+    from {
+        transform: rotate(65deg);
+    }
+}
+
+@keyframes moveRightHand {
+    from {
+        transform: rotate(-65deg);
+    }
+}
